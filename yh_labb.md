@@ -34,7 +34,7 @@
 
 **Initial conceptual ERD**
 
-<img src = "assets/initial_conceptual_ERD.png">
+<img src = "assets/initial_conceptual_erd.png">
 
 <br>
 

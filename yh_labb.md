@@ -32,6 +32,7 @@
 - Staff information
 - Consultant information
 
+
 **Initial conceptual ERD**
 
 <img src = "assets/initial_conceptual_erd.png">
@@ -66,4 +67,169 @@
 
 **conceptual ERD with composite entities**
 
+
 <img src = "assets/conceptual_erd_composite_entities.png">
+
+***Entities and composite entities***
+- School
+- Orginazer
+- SchoolProgram
+- Program
+- Curriculum
+- Course
+- SchoolCourse
+- CourseTeacher
+- Teacher
+- Teaching_Assignment
+- Standalone_course
+- Enrollment
+- Student
+- Student_Information
+- Address
+- City
+- Educational_management
+- Staff
+- Employee_Information
+- Consultan_Information
+
+***Business rules***
+- Each student may only have one registered address
+- A student can only belong to one school
+- Each employeed may only have one registered address
+---
+
+## Logical model
+
+**Entity and attribute**
+
+***Orginazer***
+- orginazer_id (PK)
+- phone
+- email
+
+***School***
+- school_id (PK)
+- address_id (FK)
+- orginazer_id (FK)
+- school_name
+- phone
+- email
+
+***Address***
+- address_id (PK)
+- city (FK)
+- address
+- postcode
+
+
+***City***
+- city_id (PK)
+- city
+
+***SchoolProgram***
+- composite primary key (school_id, program_id)
+- school_id (FK)
+- program_id (FK)
+
+***Program***
+- program_id (PK)
+- program_name
+- start_date
+- end_date
+
+
+***Curriculum***
+- composite primary key (program_id, course_id)
+- program_id (FK)
+- course_id (FK)
+
+
+***Course***
+- course_id (PK)
+- course_name
+- cours_code
+- credits
+- description
+- start_date
+- end_date
+
+***CourseTeache***
+- composite primary key (course_id, teacher_id)
+- course_id (FK)
+- teacher_id (FK)
+
+***Teacher***
+- teacher_id (PK)
+- first_name
+- last_name
+
+***TeacherAssignment***
+- compoiste primary key (teacher_id, standalone_course_id)
+- teacher_id (FK)
+- standalone_course (FK)
+
+***Standalone_course***
+- standalone_course_id (PK)
+- standalone_course_name
+- course_code
+- credits
+- description
+- start_date
+- end_date
+
+***Enrollment***
+- composite primary key (standalone_course_id, student_id)
+- standalone_course_id (FK)
+- student_id (FK)
+
+***Student***
+- student_id (PK)
+- student_information (FK)
+- class_id (FK)
+- first_name
+- last_name
+
+***Student_information***
+- student_social_securit_number (PK)
+- address_id (FK)
+- school_id (FK)
+- phone
+- email
+- password
+
+***Class***
+- class_id (PK)
+- program_id (FK)
+- class_name
+- amount
+
+***Educational_leader***
+- educational_leader_id (PK)
+- class_id (FK)
+- staff_id (FK)
+- first_name
+- last_name
+
+***Staff***
+- staff_id (PK)
+- first_name
+- last_name
+
+***Employee_information***
+- social_security_number (PK)
+- address_id (FK)
+- phone
+- email
+
+***Consultan_information***
+- consultan_id (PK)
+- address_id (FK)
+- company
+- company_information
+- organiztion_number
+- f-tax
+
+***StaffSchool***
+- composite primary key (staff_id, school_id)
+- staff_id (FK)
+- school_id (FK)

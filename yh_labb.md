@@ -56,7 +56,7 @@
 - Employee information `belong` to one and only one staff member, A staff `have` one and only one employee information.
 - Consultan information `belongs` to one or sevral staff member, A Staff member `have` only one cosultan information attached to it.
 - A Staff member `can be` one or more teacher, A Teacher `can` only be sign in as one and only one staff member.
-- Standalone course `can` be a course in the program, a Course int program `can` be a standalone course
+- Standalone course `can` be a course in the program, a Course in the program `can` be a standalone course
 
 <br>
 

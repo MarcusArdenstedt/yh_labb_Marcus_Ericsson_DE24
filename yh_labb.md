@@ -217,6 +217,7 @@
 
 ***Employee_information***
 - social_security_number (PK)
+- staff_id (FK)
 - address_id (FK)
 - phone
 - email

@@ -42,22 +42,28 @@
 
 - An Orginazer `starts` one or sevral Schools, each schools `belong` to just one Orginazer.
 - Each School has zero, one or many Programs, and Program `exists` in one or sevral Schools.
-- A School `provides` zero, one or sevral Standalone courses, and a Standalone course is `available` in one or sevral Schools.
+- A School `provides` zero, one or sevral courses, and a Course is `available` in one or sevral Schools.
 - School `has` one or sevral staff members, and Staff member `work` at one school.
 - A Standalone course is `taught` by zero, one or sevral teachers, A Teacher `teach` zero, one or more standalone courses. 
 - Teacher `teach` in one or more courses, a Course be `taught` by zero, one or sevral teachers.
 - A Class `has` a program that it follows, Program `has` zero, one or more classes that are followed by.
 - Program has `sevral` courses, a Course `exists` in one or sevral programs.
 - Each Educational leader `is` one and only one staff, a Staff `can` be one or more educational leader.
-- Each Educational leader `take care of` sevral classes, a Class `have` zero or one educational leader.
+- Each Educational leader is `responsible` for sevral classes, a Class `have` zero or one educational leader.
 - A class `has` zero, one or sevral students, Student are `placed` in one and only one class
 - Each Student `have` one and only one information, Student information `have` only one student.
-- A Student `attends` to one or sevral courses, every Course, there are students.
+- A Student `attends` to one or sevral standalone courses, every Standalone Course `there will be` zero or sevral students. 
 - Employee information `belong` to one and only one staff member, A staff `have` one and only one employee information.
-- Consultan information `belongs` to one or sevral staff member, A Staff member `have` only one cosultan information attached to it.
+- Consultan information can `belong` to one or sevral staff member, A Staff member `have` only one cosultan information attached to it.
 - A Staff member `can be` one or more teacher, A Teacher `can` only be sign in as one and only one staff member.
 - Standalone course `can` be a course in the program, a Course in the program `can` be a standalone course
 
 <br>
 
 <img src = "assets/conceptual_erd.png">
+
+<br>
+
+**conceptual ERD with composite entities**
+
+<img src = "assets/conceptual_erd_composite_entities.png">

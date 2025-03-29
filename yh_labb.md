@@ -139,19 +139,23 @@
 
 
 ***Curriculum***
-- composite primary key (program_id, course_id)
+- composite primary key (program_id, course_code)
 - program_id (FK)
-- course_id (FK)
+- course_code (FK)
 
 
 ***Course***
-- course_id (PK)
+- cours_code (PK)
 - course_name
-- cours_code
 - credits
 - description
 - start_date
 - end_date
+
+***SchoolCourse***
+- composite primary key (school_id, course_id)
+- scholl_id (FK)
+- course_id (FK)
 
 ***CourseTeache***
 - composite primary key (course_id, teacher_id)

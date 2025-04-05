@@ -199,3 +199,51 @@ CourseProgram (<u>course_id</U>, program_id, starts_date, ends_date, FK program_
 TeacherAssignment (<u>teacher_id</u>, <u>standalonecourse_id</u>, <u>school_id</u>, FK: teacher_id -> Teacher, FK: standalonecourse_id -> Standalonecourse, FK: school_id -> School)
 
 TeacherCourse (<u>teacher_id</u>, course_id, FK: course_id -> Course)
+
+
+**Function dependency**
+
+- organizer_id -> (organizer_name, phone, email, address_id)
+
+- school_id -> (address_id, schoolname, phone, email, organizer_id, open_date)
+
+
+- program_id -> (program_name, nr_active)
+
+- class_id -> class_name
+
+- student_id -> (first_name, last_name, class_id)
+
+- social_security_nr -> (student_id, address_id, phone, email)
+
+- standalonecourse_id -> (starts_date, ends_date, course_code)
+
+- course_id -> course_code
+
+- teacher_id -> course_id
+
+- teacher_id -> staff_id
+
+- staff_id -> (school_id, first_name, last_name, phone, email, work_title, roll)
+
+- consultant_id -> (fee_per_hour, organization_nr, staff_id)
+
+- organization_nr -> (company_name, f_tax, phone, email, address_id)
+
+- social_security_nr -> (staff_id, address_id, salery_per_month, started)
+
+- management_id -> (class_id, staff_id)
+
+- address_id -> (address, postal_code, city_id)
+
+- city_id -> city_name
+
+
+- (school_id, program_id, class_id) -> (school_id, program_id, class_id, nr_student, starts_date, ends_date)
+
+
+**Trivially**
+- (standalonecours_id, student_id, school_id) -> (standalonecourse_id, student_id, school_id)
+
+- (techer_id, standalonecourse_id, school_id) -> (teacher_id, standalonecourse_id, school_id)
+

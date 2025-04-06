@@ -369,3 +369,48 @@ INNER JOIN
     City cy ON a.city_id = cy.city_id
 WHERE
     sff.work_title LIKE '%lära%';
+
+
+
+
+
+-- educationalmanagement 
+SET search_path To yrkesCo;
+SELECT
+    cl.class_id,
+    cl.class_name,
+    em.management_id,
+    em.staff_id,
+    sff.first_name,
+    sff.last_name
+FROM
+    "Class" cl    
+INNER JOIN
+    EducationalManagement em ON cl.management_id = em.management_id
+INNER JOIN
+    Staff sff ON em.staff_id = sff.staff_id;
+
+
+
+
+SET search_path TO yrkesCo;
+SELECT
+    s.schoolname,
+    p.program_name,
+    cl.class_id,
+    cl.class_name,
+    em.management_id,
+    sff.first_name,
+    sff.last_name
+FROM
+    School s
+INNER JOIN
+    SchoolProgramClass spc ON s.school_id = spc.school_id
+INNER JOIN
+    "Program" p ON spc.program_id = p.program_id
+INNER JOIN
+    "Class" cl ON spc.class_id = cl.class_id
+INNER JOIN
+    EducationalManagement em ON cl.management_id = em.management_id
+INNER JOIN
+    Staff sff ON em.staff_id = sff.staff_id;

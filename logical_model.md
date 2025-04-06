@@ -108,13 +108,12 @@
 
 ***Class***
 - class_id (PK)
-- program_id (FK)
+- management_id (FK)
 - class_name
 
 
 ***EducationalManagement***
 - educationalmanagement_id (PK)
-- class_id (FK)
 - staff_id (FK)
 
 
@@ -153,7 +152,7 @@
 
 **Logical model ERD**
 
-<img src = "assets/yh_labb_logical_erd.png">
+<img src = "assets/yh_logical_erd.png">
 
 **Relational schema notation**
 - Organizer (<u>organizer_id</u>, organizer_name, phone, email, address_id, FK address_id -> Address)
@@ -162,7 +161,7 @@
 
 - Program (<u>program_id</u>, program_name, nr_active)
 
-- Class (<u>class_id</u>, class_name)
+- Class (<u>class_id</u>, management_id, class_name)
 
 - Student (<u>student_id</u>, first_name, last_name, class_id, FK: class_id -> Class)
 
@@ -188,7 +187,7 @@ Consultant_company (<u>organization_nr</u>, company_name, f_tax, phone, email, a
 
 Employee_info (<u>social_security_nr</u>, staff_id, address_id, salery_per_moth, started, FK staff_id -> Staff, FK: address_id -> Address)
 
-EducationalManagement (<u>management_id</u>, class_id, staff_id, FK: class_id -> Class, FK: staff_id -> Staff)
+EducationalManagement (<u>management_id</u>, staff_id, FK: class_id -> Class, FK: staff_id -> Staff)
 
 SchoolProgramClass (<u>school_id</u>, <u>program_id</u>, <u>class_id</u>, nr_student, starts_date, ends_date, FK: school_id -> School, FK: program_id -> Program, FK: class_id -> Class)
 
@@ -210,7 +209,7 @@ TeacherCourse (<u>teacher_id</u>, course_id, FK: course_id -> Course)
 
 - program_id -> (program_name, nr_active)
 
-- class_id -> class_name
+- class_id -> (management_id, class_name)
 
 - student_id -> (first_name, last_name, class_id)
 
@@ -232,7 +231,7 @@ TeacherCourse (<u>teacher_id</u>, course_id, FK: course_id -> Course)
 
 - social_security_nr -> (staff_id, address_id, salery_per_month, started)
 
-- management_id -> (class_id, staff_id)
+- management_id -> (staff_id)
 
 - address_id -> (address, postal_code, city_id)
 

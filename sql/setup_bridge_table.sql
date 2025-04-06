@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS SchoolProgramClass (
     nr_student INTEGER,
     starts_date DATE NOT NULL,
     ends_date DATE NOT NULL,
-    PRIMARY KEY (school_id, program_id, class_id), -- composite primary key
+    PRIMARY KEY (school_id, program_id), -- composite primary key
     FOREIGN KEY (school_id) REFERENCES School (school_id) ON DELETE CASCADE,
     FOREIGN KEY (program_id) REFERENCES "Program" (program_id) ON DELETE CASCADE,
     FOREIGN KEY (class_id) REFERENCES "Class" (class_id) ON DELETE CASCADE
@@ -61,3 +61,4 @@ CREATE TABLE IF NOT EXISTS TeacherAssignment (
     FOREIGN KEY (standalonecourse_id) REFERENCES Standalonecourse (standalonecourse_id) ON DELETE CASCADE,
     FOREIGN KEY (school_id) REFERENCES School (school_id) ON DELETE CASCADE
 );
+

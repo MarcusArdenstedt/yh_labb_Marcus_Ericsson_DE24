@@ -73,7 +73,7 @@ VALUES
     ('UX-designer', 2);
 
 
-INSERT INTO Course_info (course_code, course_name, credits, description)
+INSERT INTO Course_info (course_code, course_name, credits, descriptions)
 VALUES
     ('APM101', 'Agil projektmetodik', 20, 'Här lär du dig vad agil projektmetodik innebär, en arbetsmetod som fokusera på flexibilitet och snabb anpassning till förändringar. Agila metoder som Scrum och kanban är det som används ofta inom programmering'),
     ('DBH102', 'Databashantering', 30, 'Här får du lära dig om relationsdatabaser och NoSQL-databaser. Efter kursen kommer du kunna skapa egna databaser och anpassa dem efetr projekts behov'),
@@ -189,19 +189,21 @@ VALUES
     (8);
 
 
-INSERT INTO "Class" (class_name)
+INSERT INTO EducationalManagement (staff_id)
 VALUES
-    ('JV2025'),
-    ('AMI2025'),
-    ('AMI2025');
+    (17),
+    (19),
+    (18);
 
 
 
-INSERT INTO EducationalManagement (class_id, staff_id)
+INSERT INTO "Class" (management_id, class_name)
 VALUES
-    (1, 17),
-    (2, 19),
-    (3, 18);
+    (1, 'JV2025'),
+    (1, 'AMI2025'),
+    (2, 'AMI2025');
+
+
 
 INSERT INTO Student (first_name, last_name, class_id)
 VALUES

@@ -2,29 +2,29 @@ Create SCHEMA IF NOT EXISTS yrkesCo;
 
 SET search_path TO yrkesCo;
 
--- DROP TABLE IF EXISTS City CASCADE;
--- DROP TABLE IF EXISTS Address CASCADE;
--- DROP TABLE IF EXISTS School CASCADE;
--- DROP TABLE IF EXISTS Course CASCADE;
--- DROP TABLE IF EXISTS SchoolProgramClass CASCADE;
--- DROP TABLE IF EXISTS Schoolname CASCADE;
--- DROP TABLE IF EXISTS Organizer CASCADE;
--- DROP TABLE IF EXISTS CourseProgram CASCADE;
--- DROP TABLE IF EXISTS Standalonecourse CASCADE;
--- DROP TABLE IF EXISTS Course_info CASCADE;
--- DROP TABLE IF EXISTS Staff CASCADE;
--- DROP TABLE IF EXISTS Teacher CASCADE;
--- Drop TABLE if EXISTS "Program" CASCADE;
--- Drop TABLE if EXISTS Consultant CASCADE;
--- Drop TABLE if EXISTS Consultant_company CASCADE;
--- Drop TABLE if EXISTS educationalmanagement CASCADE;
--- Drop TABLE if EXISTS employee_info CASCADE;
--- Drop TABLE if EXISTS Enrollment CASCADE;
--- Drop TABLE if EXISTS Student CASCADE;
--- Drop TABLE if EXISTS Student_info CASCADE;
--- Drop TABLE if EXISTS TeacherAssignment CASCADE;
--- Drop TABLE if EXISTS TeacherCourse CASCADE;
--- Drop TABLE if EXISTS "Class" CASCADE;
+DROP TABLE IF EXISTS City CASCADE;
+DROP TABLE IF EXISTS Address CASCADE;
+DROP TABLE IF EXISTS School CASCADE;
+DROP TABLE IF EXISTS Course CASCADE;
+DROP TABLE IF EXISTS SchoolProgramClass CASCADE;
+DROP TABLE IF EXISTS Schoolname CASCADE;
+DROP TABLE IF EXISTS Organizer CASCADE;
+DROP TABLE IF EXISTS CourseProgram CASCADE;
+DROP TABLE IF EXISTS Standalonecourse CASCADE;
+DROP TABLE IF EXISTS Course_info CASCADE;
+DROP TABLE IF EXISTS Staff CASCADE;
+DROP TABLE IF EXISTS Teacher CASCADE;
+Drop TABLE if EXISTS "Program" CASCADE;
+Drop TABLE if EXISTS Consultant CASCADE;
+Drop TABLE if EXISTS Consultant_company CASCADE;
+Drop TABLE if EXISTS educationalmanagement CASCADE;
+Drop TABLE if EXISTS employee_info CASCADE;
+Drop TABLE if EXISTS Enrollment CASCADE;
+Drop TABLE if EXISTS Student CASCADE;
+Drop TABLE if EXISTS Student_info CASCADE;
+Drop TABLE if EXISTS TeacherAssignment CASCADE;
+Drop TABLE if EXISTS TeacherCourse CASCADE;
+Drop TABLE if EXISTS "Class" CASCADE;
 
 
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS Course_info (
     course_code VARCHAR(25) PRIMARY KEY,
     course_name VARCHAR(50) NOT NULL,
     credits INTEGER NOT NULL,
-    description TEXT NOT NULL
+    descriptions TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Course (
@@ -141,9 +141,18 @@ CREATE TABLE IF NOT EXISTS Teacher (
     FOREIGN KEY (staff_id) REFERENCES Staff (staff_id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS EducationalManagement (
+    management_id SERIAL PRIMARY KEY,
+    staff_id INTEGER NOT NULL,
+    FOREIGN KEY (staff_id) REFERENCES Staff (staff_id) ON DELETE CASCADE
+);
+
+
 CREATE TABLE IF NOT EXISTS "Class" (
     class_id SERIAL PRIMARY KEY,
-    class_name VARCHAR(50)
+    management_id INTEGER,
+    class_name VARCHAR(50),
+    FOREIGN KEY (management_id) REFERENCES EducationalManagement (management_id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Student (
@@ -164,14 +173,6 @@ CREATE TABLE IF NOT EXISTS Student_info (
     FOREIGN KEY (address_id) REFERENCES Address (address_id) ON DELETE CASCADE
 );
 
-
-CREATE TABLE IF NOT EXISTS EducationalManagement (
-    management_id SERIAL PRIMARY KEY,
-    class_id INTEGER NOT NULL,
-    staff_id INTEGER NOT NULL,
-    FOREIGN KEY (class_id) REFERENCES "Class" (class_id) ON DELETE CASCADE,
-    FOREIGN KEY (staff_id) REFERENCES Staff (staff_id) ON DELETE CASCADE
-);
 
 
 

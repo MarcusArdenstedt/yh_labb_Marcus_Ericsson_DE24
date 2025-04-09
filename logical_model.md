@@ -108,13 +108,9 @@
 
 ***Class***
 - class_id (PK)
-- management_id (FK)
+- program_id 
 - class_name
 
-
-***EducationalManagement***
-- educationalmanagement_id (PK)
-- staff_id (FK)
 
 
 ***Staff***
@@ -133,12 +129,13 @@
 - address_id (FK)
 - salary
 - started
+- ended
 
 ***Consultant***
 - consultant_id (PK)
 - fee_per_hour
 - organization_nr (FK)
-- staff_id (FK)
+- teacher_id
 
 
 ***Consultan_company***

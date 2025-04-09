@@ -83,7 +83,7 @@ each Student `have` one and only one student information, Studen_info can only `
 **Business rules**
 
 - A program can exist in other school.
-- A program can be create before there is a class.
+- When a program created a class automatic creates but don't need to have students.
 - Class can only belong to one program.
 - student can't be in sevral classes, only in one
 - Standalonecourse can take student that not are in any classes.

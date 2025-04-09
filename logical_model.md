@@ -13,10 +13,10 @@
 ***School***
 - school_id (PK)
 - address_id (FK)
+- orginazer_id (FK)
 - schoolname
 - phone
 - email
-- orginazer_id (FK)
 - open_date
 
 ***Address***
@@ -30,29 +30,26 @@
 - city_id (PK)
 - city_name
 
-***SchoolProgramClass**
-- composite primary key (school_id, program_id, Class_id)
+***School_Student***
 - school_id (FK)
-- program_id (FK),
-- class_id (FK)
-- starts_date
-- ends_date
+- student_id (FK)
+- composite primary key (school_id, student_id)
+
+
 
 ***Program***
 - program_id (PK)
+- school_id (FK)
 - program_name
-- nr_active
-
-***CourseProgram***
-- composite primary key (program_id, course_code)
-- program_id (FK)
-- course_code (FK)
 - starts_date
 - ends_date
 
-***Course***
-- cours_code (PK)
+
+***Course_schedule***
+- cours_id (PK)
 - course_code (FK)
+- starts_date
+- ends_date
 
 
 ***Course_info***
@@ -63,34 +60,47 @@
 
 
 
-***TeacherCourse***
-- composite primary key (course_id, teacher_id)
-- course_id (FK)
-- teacher_id (FK)
-
 ***Teacher***
 - teacher_id (PK)
-- staff (FK)
+- consultant_id (FK)
+- employee_id (FK)
+- first_name
+- last_name
+- phone
+- email
+
+***Course_schedule***
+- schedule_id (PK)
+- teacher_id (FK)
+- course_id (FK)
+- starts_date
+- ends_date
 
 
-***TeacherAssignment***
-- compoiste primary key (teacher_id, standalone_course_id, school_id)
+***Teacher_Standalonecourse***
+- teacher_standalonecourse_id (PK)
 - teacher_id (FK)
 - standalonecourse_id (FK)
-- school_id (FK)
+- starts_date
+- ends_date
+
 
 ***Standalonecourse***
 - standalonecourse_id (PK)
-- starts_date
-- ends_date
+- Language
 - course_code (FK)
 
+***SchoolStandalonecourse***
+- school_id (FK)
+- standalonecourse_id (FK)
+- composite primary key (school_id, standalonecourse_id)
 
 ***Enrollment***
-- composite primary key (standalone_course_id, student_id, school_id)
+- enrollment_id (PK)
 - standalonecourse_id (FK)
 - student_id (FK)
-- school_id (FK)
+- enrollment_date
+- grade
 
 ***Student***
 - student_id (PK)
@@ -108,7 +118,8 @@
 
 ***Class***
 - class_id (PK)
-- program_id 
+- program_id (FK)
+- school_id (FK)
 - class_name
 
 
@@ -116,6 +127,7 @@
 ***Staff***
 - staff_id (PK)
 - school_id (FK)
+- employee_id (FK)
 - first_name
 - last_name
 - phone
@@ -124,8 +136,8 @@
 - roll
 
 ***Employee_info***
-- social_security_nr (PK) 
-- staff_id (FK)
+- employee_id (PK)
+- social_security_nr  
 - address_id (FK)
 - salary
 - started
@@ -134,8 +146,9 @@
 ***Consultant***
 - consultant_id (PK)
 - fee_per_hour
+- work title
 - organization_nr (FK)
-- teacher_id
+
 
 
 ***Consultan_company***
@@ -149,7 +162,7 @@
 
 **Logical model ERD**
 
-<img src =
+<img src = "assets/yh_logical_erd.png">
 
 **Relational schema notation**
 - Organizer (<u>organizer_id</u>, organizer_name, phone, email, address_id, FK address_id -> Address)

@@ -60,7 +60,6 @@ each Student `have` one and only one student information, Studen_info can only `
 - School
 - Organizer
 - Program
-- School_program
 - Course_schedule
 - Course_info
 - Teacher_Course_schedule
@@ -82,8 +81,8 @@ each Student `have` one and only one student information, Studen_info can only `
 
 **Business rules**
 
-- A program can exist in other school.
-- When a program created a class automatic creates but don't need to have students.
+- A program can only exist in one school.
+- A program can be created without having a class.
 - Class can only belong to one program.
 - student can't be in sevral classes, only in one
 - Standalonecourse can take student that not are in any classes.

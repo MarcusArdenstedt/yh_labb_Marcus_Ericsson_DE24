@@ -87,6 +87,9 @@ each Student `have` one and only one student information, Studen_info can only `
 - Class can only belong to one program.
 - student can't be in sevral classes, only in one
 - Standalonecourse can take student that not are in any classes.
+- Staff can only belong to one school.
 - Course_schedule can only belong to one program and a program can only have one course_schedule.
 - Student can only writte one address, phone number and email.
 - Employee info only contains address, salery and when they started and ended. 
+- Teacher can only belong to one school.
+- Educational management must be a employee, so he/she exist in staff. 

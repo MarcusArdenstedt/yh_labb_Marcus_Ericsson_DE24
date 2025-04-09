@@ -152,7 +152,7 @@
 
 **Logical model ERD**
 
-<img src = "assets/yh_logical_erd.png">
+<img src =
 
 **Relational schema notation**
 - Organizer (<u>organizer_id</u>, organizer_name, phone, email, address_id, FK address_id -> Address)

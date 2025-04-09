@@ -4,74 +4,89 @@
 - School
 - Organizer
 - Program
-- Course
-- Standalone_course
+- Course_schedule
+- Standalonecourse
+- Course_info
 - Class
 - Student
 - Student info
-- EducationalManagement
 - Teacher
 - Staff
 - Consultant
 - Consultant_company
+- Employee_info
+- Address
+- City
 
 
-**Initial conceptual ERD**
-
-<img src = "assets/yh_initial_conceptual_erd.png">
 
 <br>
 
 **Relationship Statement and label**
 - an Organizer `starts` one or sevral schools, each School `belongs to` one and only one organizer.
-- Each School `has` zero, one or sevral programs, a Program `belong to` one or sevral schools.
-- each Program `has` zero, one or more classes,
-each Class `belongs to` one and only one program.
-- a Program `has` sevral courses, a Course `is available in` one or more programs.
-- each Course there is one and only one course_info, Course_info `belongs to` one and only one course.   
-- each Class `has` zero, one or more students, Student can only `belong to` one and only one class.
-each Student `have` one and only one student information, Studen_info can only `belong to` one student.
-- each Student_info `can have` one and only one address, an Address `is linked to` one and only one student_info.
-- An address `is in` one and only one city, each City `has` one or more addresses.
-- each EducationalManagement `is resposible for` sevral classes, each Class `has` zero or one educationalmanagement.
-- EducationalManagement `is` one and only one staff, a Staff `can be` one and only one educationalManagement.
-- a staff `work at`one and only one school, each School `has` one or more staffs.
-- Employee_info `belongs to` one and only one staff, each staff `can have` one and only one empolyee_info.
-- Consultant_company `has` one or more consultants, each Consultant `belongs to` one and only one consultant_company. 
-- a Consultant `is` one and only one staff, Staff `can be` one and only one consultant.
-- a Staff `can be` one or more teacher, a Teacher is one and only one staff member.
+- Each School `Provides` one or sevral programs, a Program `belong to` one or sevral schools.
+- each Program `belongs to` zero, one or more classes,
+each Class `create to ` one and only one program.
+- a Program `arranged` sevral courses in course_schedule, each Course_schedula `is made for` one and only one program.
+- a Course_schedule `has` sevral course_info, Course_info `belongs to` one and only one course_schedule.   
+- a Class is  a `set of ` sevral students, Student can only `belong to` one and only one class.
+- School `consists of` one or more classes, each Class `belongs to` one and only one school.
+each Student `have` one and only one student information, Studen_info can only `belong to` one and only one student.
+- a Address `belongs to` one and only one student_info, Student_info is `connected` to one and only one address. 
+- a Address `is in` one and only one city, a city `contains` one and only one address.  
+- a staff `work at` one and only one school, each School `managed by` one or more staffs.
+- Employee_info `belongs to` one and only one staff, each Staff `typing in` one and only one information in empolyee_info.
+- Consultant_company has one or more  `employees` as consultants, each Consultant `belongs to` one and only one consultant_company. 
+- a Staff member `is linked` to zero, one or more consultants, a Consultant `corresponds` to one and only one staff.
+- a Staff member may be `linked to` one or more teachers, every Teacher `must be` one and only one staff.  
 - each School `provides` zero, one or more standalonecourses, Standalonecourse  is `available in` one or more schools.
-- Teacher `teaches in` one or more courses, Course is `taught` by zero, one or more teachers.
+- Teacher `teaches` in zero, one or more coursers in course_schedule, each  course in Course_schedule `shared with` one or more teachers.
 - Teacher `teaches in` one or more standalonecourses, Standalonecourse `taught` by zero, one or more teachers.
+- a school `is a workplace` for one or more techers, Teacher `work at` one and only one school.  
 
+**Initial conceptual ERD**
+
+<img src = "assets/yh_initial_conceptual_erd.png">
 
 
 <br>
 
-**conceptual ERD with composite entities**
+**Conceptual ERD with composite entities**
 
 
 <img src = "assets/yh_conceptual_erd.png">
 
-***Entities and composite entities***
+***Entities***
 - School
 - Organizer
-- SchoolProgramClass
 - Program
-- CourseProgram
-- Course
+- School_program
+- Course_schedule
 - Course_info
-- TeacherCourse
+- Teacher_Course_schedule
 - Teacher
-- TeachingAssignment
+- Teacher_Standalonecourse
 - Standalonecourse
 - Enrollment
+- Class
+- School_Student
 - Student
 - Student_Info
 - Address
 - City
 - Employee_info
-- EducationalManagement
 - Staff
 - Consultan
 - Consultant_company
+
+
+**Business rules**
+
+- A program can exist in other school.
+- A program can be create before there is a class.
+- Class can only belong to one program.
+- student can't be in sevral classes, only in one
+- Standalonecourse can take student that not are in any classes.
+- Course_schedule can only belong to one program and a program can only have one course_schedule.
+- Student can only writte one address, phone number and email.
+- Employee info only contains address, salery and when they started and ended. 

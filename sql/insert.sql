@@ -151,6 +151,10 @@ VALUES
     (1, 4, 'Sven', 'Erixon', '070-247-57-73', 'svenerixon@.com', 'Administration'),
     (1, 5, 'Lisa', 'Lisason', '070-167-15-13', 'lisalisason@.com', 'Administration'),
     (2, 6, 'Maja', 'Majason', '070-498-89-78', 'majamajason@.com', 'Administration'),
+    (1, 7, 'Jakob', 'Brorson', '073-453-78-87', 'jakobbrorson@.com', 'Utbildningsledare'),
+    (2, 8, 'Mindy', 'Larsson', '075-421-21-22', 'mindylarsson@.com', 'Utbildningsledare'),
+    (1, 9, 'Jennifer', 'Axelson', '077-813-81-82', 'jenniferaxelson@.com', 'Utbildningsledare'),
+    (2, 10, 'Carolina', 'Karlson', '077-953-91-19', 'carolinakarlson@.com', 'Utbildningsledare'),
     (2, 11, 'Beck', 'Svahn', '071-231-19-91', 'becksvahn@.com', 'Vaktmästare'),
     (1, 12, 'Stig', 'Larsson', '075-412-94-34', 'stiglarsson@.com', 'Vaktmästare');
 
@@ -182,27 +186,21 @@ VALUES
 
     
 
-INSERT INTO Educational_management (employee_id, first_name, last_name, phone, email)
+
+
+
+
+
+INSERT INTO "Class" (class_name, program_id, staff_id, school_id)
 VALUES
-    (7, 'Jakob', 'Brorson', '073-453-78-87', 'jakobbrorson@.com' ),
-    (8, 'Mindy', 'Larsson', '075-421-21-22', 'mindylarsson@.com'),
-    (9, 'Jennifer', 'Axelson', '077-813-81-82', 'jenniferaxelson@.com'),
-    (10, 'Carolina', 'Karlson', '077-953-91-19', 'carolinakarlson@.com');
-
-
-
-
-
-INSERT INTO "Class" (class_name, program_id, management_id, school_id)
-VALUES
-    ('JV2025', 1, 1, 1),
-    ('AMI2025', 2, 2, 2),
-    ('ELD2025', 3, 3, 2),
-    ('UXD2025', 4, 4, 1),
-    ('JV2026', 5, 1, 1),
-    ('AMI2026', 6, 2, 2),
-    ('ELD2026', 7, 3, 2),
-    ('UXD2026', 8, 4, 1),
+    ('JV2025', 1, 7, 1),
+    ('AMI2025', 2, 8, 2),
+    ('ELD2025', 3, 9, 2),
+    ('UXD2025', 4, 10, 1),
+    ('JV2026', 5, 7, 1),
+    ('AMI2026', 6, 8, 2),
+    ('ELD2026', 7, 9, 2),
+    ('UXD2026', 8, NULL, 1),
     ('JV2027', 9, NULL, 1),
     ('AMI2027', 10, NULL, 2),
     ('ELD2027', 11, NULL, 2),
@@ -356,14 +354,15 @@ VALUES
     (3, 9, '2022-06-10', 'C'),
     (4,  NULL, NULL, NULL);
 
---- Ternary table.
 
--- INSERT INTO SchoolProgramClass (school_id, program_id, class_id, nr_student, starts_date, ends_date)
--- VALUES
---     (1, 1, 1, 4, '2025-09-10', '2027-06-25'),
---     (1, 2, 2, NULL, '2025-09-10', '2027-06-20'),
---     (2, 2, 3, 3, '2025-11-02', '2027-06-28');
- 
+
+INSERT INTO Teacher_Standalonecourse (teacher_id, standalonecourse_id, starts_date, ends_date)
+VALUES
+    (1, 1, '2025-06-10', '2025-07-20'),
+    (5, 2, '2025-06-10', '2025-07-21'),
+    (6, 3, '2025-05-10', '2025-06-30'),
+    (1, 4, '2024-06-11', '2024-07-20'),
+    (6, 4, '2022-06-11', '2022-07-21');
 
 
 

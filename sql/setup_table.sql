@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS Staff (
     last_name VARCHAR(50) NOT NULL,
     phone VARCHAR(20) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL CHECK (email LIKE '%@%'),
-    work_title VARCHAR(25) NOT NULL,
+    work_title VARCHAR(25),
     FOREIGN KEY (school_id) REFERENCES School (school_id) ON DELETE CASCADE,
     FOREIGN KEY (employee_id) REFERENCES Employee_info (employee_id) ON DELETE CASCADE
 ); 
@@ -159,25 +159,16 @@ CREATE TABLE IF NOT EXISTS Consultant (
 
 
 
-CREATE TABLE IF NOT EXISTS Educational_management (
-    management_id SERIAL PRIMARY KEY,
-    employee_id INTEGER NOT NULL,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOt NULL,
-    phone VARCHAR(20) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL CHECK (email LIKE '%@%'),
-    FOREIGN KEY (employee_id) REFERENCES Employee_info (employee_id) ON DELETE CASCADE
-);
 
 
 CREATE TABLE IF NOT EXISTS "Class" (
     class_id SERIAL PRIMARY KEY,
     class_name VARCHAR(50),
     program_id INTEGER NOT NULL,
-    management_id INTEGER,
+    staff_id INTEGER,
     school_id INTEGER NOT NULL,
     FOREIGN KEY (program_id) REFERENCES "Program" (program_id) ON DELETE CASCADE,
-    FOREIGN KEY (management_id) REFERENCES Educational_management (management_id) ON DELETE CASCADE,
+    FOREIGN KEY (staff_id) REFERENCES Staff (staff_id) ON DELETE CASCADE,
     FOREIGN KEY (school_id) REFERENCES School (school_id) ON DELETE CASCADE
 );
 

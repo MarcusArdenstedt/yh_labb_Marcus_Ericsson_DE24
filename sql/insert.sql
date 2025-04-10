@@ -127,23 +127,32 @@ VALUES
     ('Engelska', 'AME107'),
     ('Svenska', 'FRT109');
 
-
-INSERT INTO Staff (school_id, first_name, last_name, phone, email)
+INSERT INTO Employee_info (social_security_nr, address_id, salary_per_month, started, ended)
 VALUES
-    (1, 'Olof', 'Svensson', '073-267-13-42', 'olofsvensson@.com'),
-    (2, 'Linda', 'Lindasson', '073-245-12-90', 'lindalindasson@.com'),
-    (1, 'Jack', 'Green', '070-287-69-69', 'jackgreen@.com'),
-    (1, 'Sven', 'Erixon', '070-247-57-73', 'svenerixon@.com'),
-    (1, 'Lisa', 'Lisason', '070-167-15-13', 'lisalisason@.com'),
-    (2, 'Maja', 'Majason', '070-498-89-78', 'majamajason@.com'),
-    (2, 'Bob', 'Bobson', '070-591-45-12', 'bobbobson@.com'),
-    (2, 'Linn', 'Eriksson', '070-207-01-23', 'linneriksson@.com'),
-    (1, 'Jakob', 'Brorson', '073-453-78-87', 'jakobbrorson@.com'),
-    (2, 'Mindy', 'Larsson', '075-421-21-22', 'mindylarsson@.com'),
-    (1, 'Jennifer', 'Axelson', '077-813-81-82', 'jenniferaxelson@.com'),
-    (2, 'Carolina', 'Karlson', '077-953-91-19', 'carolinakarlson@.com'),
-    (2, 'Beck', 'Svahn', '071-231-19-91', 'becksvahn@.com'),
-    (1, 'Stig', 'Larsson', '075-412-94-34', 'stiglarsson@.com');
+    ('1978-01-29-4991', 7, 55000, '2000-10-17', NULL),
+    ('1987-10-14-1337', 8, 65000,'2015-01-10', NULL),
+    ('1993-11-11-4578', 11, 44000, '2020-10-02', NULL),
+    ('1980-07-25-9012', 12, 40000, '2010-10-10', NULL),
+    ('1995-04-19-1783', 13, 36000, '2018-10-27', NULL),
+    ('1980-12-24-5682', 14, 35000, '2005-01-10', '2024-06-30'),
+    ('1974-02-24-3457', 17, 38500, '2009-09-18', NULL),
+    ('2000-02-10-2341', 18, 29500, '2024-09-10', NULL),
+    ('1997-03-09-4538', 19, 33000, '2020-05-20', NULL),
+    ('1990-05-02-1245', 20, 35500, '2020-05-20', NULL),
+    ('1989-07-01-1441', 33, 25000, '2000-06-25', NULL),
+    ('1980-09-14-1989', 34, 30000, '1996-10-11', NULL);
+  
+
+INSERT INTO Staff (school_id, employee_id, first_name, last_name, phone, email, work_title)
+VALUES
+    (1, 1, 'Olof', 'Svensson', '073-267-13-42', 'olofsvensson@.com', 'Rektor'),
+    (2, 2, 'Linda', 'Lindasson', '073-245-12-90', 'lindalindasson@.com', 'Rektor'),
+    (1, 3, 'Jack', 'Green', '070-287-69-69', 'jackgreen@.com', 'Administration'),
+    (1, 4, 'Sven', 'Erixon', '070-247-57-73', 'svenerixon@.com', 'Administration'),
+    (1, 5, 'Lisa', 'Lisason', '070-167-15-13', 'lisalisason@.com', 'Administration'),
+    (2, 6, 'Maja', 'Majason', '070-498-89-78', 'majamajason@.com', 'Administration'),
+    (2, 11, 'Beck', 'Svahn', '071-231-19-91', 'becksvahn@.com', 'Vaktmästare'),
+    (1, 12, 'Stig', 'Larsson', '075-412-94-34', 'stiglarsson@.com', 'Vaktmästare');
 
 
 INSERT INTO Consultant_company (organization_nr, company_name, f_tax, phone, email, address_id)
@@ -154,58 +163,50 @@ VALUES
   
 
 
-
-INSERT INTO Consultant (fee_per_hour, work_title, organization_nr)
+INSERT INTO Teacher (employee_id, school_id, first_name, last_name, phone, email)
 VALUES
-    (1200, 'Lärare', '667812-1234'),
-    (1000, 'Lärare', '77910-3456'),
-    (900, 'Lärare', '111344-7891');
+    (NULL, 1, 'Rollo', 'Lothbrok', '071-321-90-99', 'rollolothbrob@.com'),
+    (NULL, 1, 'Joe', 'Andersson', '070-147-31-90', 'joeandersson@.com'),
+    (NULL, 2, 'Malin', 'gustavsson', '070-345-56-76', 'malingustavsson@.com'),
+    (3, 1, 'Jan', 'Jakobson', '070-456-23-15', 'janjakaobson@.com'),
+    (5, 2, 'Karin', 'Svensson', '070-648-87-56', 'karinsvensson@.com'),
+    (11, 2, 'Scott', 'Svansson', '070-734-37-72', 'scottsvansson@.com');
 
 
-INSERT INTO Employee_info (social_security_nr, staff_id, address_id, work_title, salary_per_month, started, ended)
+INSERT INTO Consultant (fee_per_hour, teacher_id, organization_nr)
 VALUES
-    ('1978-01-29-4991', 1, 7, 'Rektor', 55000, '2000-10-17', NULL),
-    ('1987-10-14-1337', 2, 8, 'Rektor', 65000,'2015-01-10', NULL),
-    ('1993-11-11-4578', 5, 11, 'Administration', 44000, '2020-10-02', NULL),
-    ('1980-07-25-9012', 6, 12, 'Administration', 40000, '2010-10-10', NULL),
-    ('1995-04-19-1783', 7, 13, 'Administaration', 36000, '2018-10-27', NULL),
-    ('1980-12-24-5682', 8, 14, 'Administration', 35000, '2005-01-10', '2024-06-30'),
-    ('1974-02-24-3457', 9, 17, 'Educational management', 38500, '2009-09-18', NULL),
-    ('2000-02-10-2341', 10, 18, 'Educational mangement', 29500, '2024-09-10', NULL),
-    ('1997-03-09-4538', 11, 19, 'Educational management', 33000, '2020-05-20', NULL),
-    ('1990-05-02-1245', 12, 20, 'Educational management', 35500, '2020-05-20', NULL),
-    ('1989-07-01-1441', 13, 33, 'Fastighetsskötare', 25000, '2000-06-25', NULL),
-    ('1980-09-14-1989', 14, 34, 'Fastighetsskötare', 30000, '1996-10-11', NULL);
-  
+    (1200, 1, '667812-1234'),
+    (1000, 2, '77910-3456'),
+    (900, 3, '111344-7891');
+
+
     
 
-INSERT INTO Teacher (consultant_id, employee_id, school_id, first_name, last_name, phone, email)
+INSERT INTO Educational_management (employee_id, first_name, last_name, phone, email)
 VALUES
-    (1, NULL, 1, 'Rollo', 'Lothbrok', '071-321-90-99', 'rollolothbrob@.com'),
-    (2, NULL, 1, 'Joe', 'Andersson', '070-147-31-90', 'joeandersson@.com'),
-    (3, NULL, 2, 'Malin', 'gustavsson', '070-345-56-76', 'malingustavsson@.com'),
-    (NULL, 3, 1, 'Jan', 'Jakobson', '070-456-23-15', 'janjakaobson@.com'),
-    (NULL, 5, 2, 'Karin', 'Svensson', '070-648-87-56', 'karinsvensson@.com'),
-    (NULL, 11, 2, 'Scott', 'Svansson', '070-734-37-72', 'scottsvansson@.com');
+    (7, 'Jakob', 'Brorson', '073-453-78-87', 'jakobbrorson@.com' ),
+    (8, 'Mindy', 'Larsson', '075-421-21-22', 'mindylarsson@.com'),
+    (9, 'Jennifer', 'Axelson', '077-813-81-82', 'jenniferaxelson@.com'),
+    (10, 'Carolina', 'Karlson', '077-953-91-19', 'carolinakarlson@.com');
 
 
 
 
 
-INSERT INTO "Class" (class_name, program_id, staff_id, school_id)
+INSERT INTO "Class" (class_name, program_id, management_id, school_id)
 VALUES
-    ('JV2025', 1, 11, 1),
-    ('AMI2025', 2, 12, 2),
-    ('ELD2025', 3, 13, 2),
-    ('UXD2025', 4, 14, 1),
-    ('JV2026', 5, 11, 1),
-    ('AMI2026', 6, 12, 2),
-    ('ELD2026', 7, 13, 2),
-    ('UXD2026', 8, 14, 1),
-    ('JV2027', 9, 11, 1),
-    ('AMI2027', 10, 12, 2),
-    ('ELD2027', 11, 13, 2),
-    ('UXD2027', 12, 14, 1);
+    ('JV2025', 1, 1, 1),
+    ('AMI2025', 2, 2, 2),
+    ('ELD2025', 3, 3, 2),
+    ('UXD2025', 4, 4, 1),
+    ('JV2026', 5, 1, 1),
+    ('AMI2026', 6, 2, 2),
+    ('ELD2026', 7, 3, 2),
+    ('UXD2026', 8, 4, 1),
+    ('JV2027', 9, NULL, 1),
+    ('AMI2027', 10, NULL, 2),
+    ('ELD2027', 11, NULL, 2),
+    ('UXD2027', 12, NULL, 1);
 
 
 
@@ -238,7 +239,7 @@ VALUES
     ('2007-10-17-2449', 10, 33, '070-252-53-95', 'jessicalandstom@.com');
 
 
--------------------------------------
+
 
 
 

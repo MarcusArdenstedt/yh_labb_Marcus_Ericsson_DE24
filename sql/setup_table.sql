@@ -25,6 +25,8 @@ Drop TABLE if EXISTS Student_info CASCADE;
 Drop TABLE if EXISTS Teacher_Standalonecourse CASCADE;
 Drop TABLE if EXISTS TeacherCourse CASCADE;
 Drop TABLE if EXISTS "Class" CASCADE;
+Drop TABLE if EXISTS Educational_management CASCADE;
+
 
 
 
@@ -97,15 +99,6 @@ CREATE TABLE IF NOT EXISTS Standalonecourse (
 
 
 
-CREATE TABLE IF NOT EXISTS Staff (
-    staff_id SERIAL PRIMARY KEY,
-    school_id INTEGER NOT NULL,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
-    phone VARCHAR(20) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL CHECK (email LIKE '%@%'),
-    FOREIGN KEY (school_id) REFERENCES School (school_id) ON DELETE CASCADE
-); 
 
 CREATE TABLE IF NOT EXISTS Consultant_company (
     organization_nr VARCHAR(11) PRIMARY KEY,
@@ -117,52 +110,74 @@ CREATE TABLE IF NOT EXISTS Consultant_company (
     FOREIGN KEY (address_id) REFERENCES Address (address_id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS Consultant (
-    consultant_id SERIAL PRIMARY KEY,
-    fee_per_hour INTEGER NOT NULL,
-    work_title VARCHAR(50) NOT NULL,
-    organization_nr VARCHAR(11) NOT NULL,
-    FOREIGN KEY (organization_nr) REFERENCES Consultant_company (organization_nr) ON DELETE CASCADE
-);
-
 CREATE TABLE IF NOT EXISTS Employee_info (
     employee_id SERIAL PRIMARY KEY,
     social_security_nr VARCHAR(15) UNIQUE NOT NULL,
-    staff_id INTEGER NOT NULL,
     address_id INTEGER NOT NULL,
-    work_title VARCHAR(25) NOT NULL,
     salary_per_month INTEGER NOT NULL,
     started DATE NOT NULL,
     ended DATE,
-    FOREIGN KEY (staff_id) REFERENCES Staff (staff_id) ON DELETE CASCADE,
     FOREIGN KEY (address_id) REFERENCES Address (address_id) ON DELETE CASCADE
 );
 
+
+CREATE TABLE IF NOT EXISTS Staff (
+    staff_id SERIAL PRIMARY KEY,
+    employee_id INTEGER NOT NULL,
+    school_id INTEGER NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    phone VARCHAR(20) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL CHECK (email LIKE '%@%'),
+    work_title VARCHAR(25) NOT NULL,
+    FOREIGN KEY (school_id) REFERENCES School (school_id) ON DELETE CASCADE,
+    FOREIGN KEY (employee_id) REFERENCES Employee_info (employee_id) ON DELETE CASCADE
+); 
+
 CREATE TABLE IF NOT EXISTS Teacher (
     teacher_id SERIAL PRIMARY KEY,
-    consultant_id INTEGER,
     employee_id INTEGER,
     school_id INTEGER NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     phone VARCHAR(20) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL CHECK (email LIKE '%@%'),
-    FOREIGN KEY (consultant_id) REFERENCES Consultant (consultant_id) ON DELETE CASCADE,
     FOREIGN KEY (employee_id) REFERENCES Employee_info (employee_id) ON DELETE CASCADE,
     FOREIGN KEY (school_id) REFERENCES School (school_id) ON DELETE CASCADE
 );
 
 
+CREATE TABLE IF NOT EXISTS Consultant (
+    consultant_id SERIAL PRIMARY KEY,
+    fee_per_hour INTEGER NOT NULL,
+    teacher_id INTEGER NOT NULL,
+    organization_nr VARCHAR(11) NOT NULL,
+    FOREIGN KEY (organization_nr) REFERENCES Consultant_company (organization_nr) ON DELETE CASCADE,
+    FOREIGN KEY (teacher_id) REFERENCES Teacher (teacher_id) ON DELETE CASCADE
+);
+
+
+
+
+CREATE TABLE IF NOT EXISTS Educational_management (
+    management_id SERIAL PRIMARY KEY,
+    employee_id INTEGER NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOt NULL,
+    phone VARCHAR(20) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL CHECK (email LIKE '%@%'),
+    FOREIGN KEY (employee_id) REFERENCES Employee_info (employee_id) ON DELETE CASCADE
+);
 
 
 CREATE TABLE IF NOT EXISTS "Class" (
     class_id SERIAL PRIMARY KEY,
     class_name VARCHAR(50),
     program_id INTEGER NOT NULL,
-    staff_id INTEGER,
+    management_id INTEGER,
     school_id INTEGER NOT NULL,
     FOREIGN KEY (program_id) REFERENCES "Program" (program_id) ON DELETE CASCADE,
-    FOREIGN KEY (staff_id) REFERENCES Staff (staff_id) ON DELETE CASCADE,
+    FOREIGN KEY (management_id) REFERENCES Educational_management (management_id) ON DELETE CASCADE,
     FOREIGN KEY (school_id) REFERENCES School (school_id) ON DELETE CASCADE
 );
 

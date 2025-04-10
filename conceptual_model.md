@@ -4,7 +4,7 @@
 - School
 - Organizer
 - Program
-- Course_schedule
+- Course
 - Standalonecourse
 - Course_info
 - Class
@@ -27,8 +27,8 @@
 - Each School `Provides` one or sevral programs, a Program `belong to` one or sevral schools.
 - each Program `belongs to` zero, one or more classes,
 each Class `create to ` one and only one program.
-- a Program `arranged` sevral courses in course_schedule, each Course_schedula `is made for` one and only one program.
-- a Course_schedule `has` sevral course_info, Course_info `belongs to` one and only one course_schedule.   
+- a Program is `build by` sevral courses, a Course `belaongs to` one and only one program.
+- each Course `taught by` one or more teachers, Teacher teaches in zero, one or more courses.
 - a Class is  a `set of ` sevral students, Student can only `belong to` one and only one class.
 - School `consists of` one or more classes, each Class `belongs to` one and only one school.
 each Student `have` one and only one student information, Studen_info can only `belong to` one and only one student.
@@ -60,9 +60,10 @@ each Student `have` one and only one student information, Studen_info can only `
 - School
 - Organizer
 - Program
-- Course_schedule
+- Course
+- Program_Course
 - Course_info
-- Teacher_Course_schedule
+- Teacher_Course
 - Teacher
 - Teacher_Standalonecourse
 - Standalonecourse
@@ -83,12 +84,11 @@ each Student `have` one and only one student information, Studen_info can only `
 
 - A program can only exist in one school.
 - A program can be created without having a class.
-- Class can only belong to one program.
-- student can't be in sevral classes, only in one
+- a class can only belong to one program.
+- student can't be in sevral classes, only in one.
 - Standalonecourse can take student that not are in any classes.
 - Staff can only belong to one school.
-- Course_schedule can only belong to one program and a program can only have one course_schedule.
-- Student can only writte one address, phone number and email.
-- Employee info only contains address, salery and when they started and ended. 
+- Student can only use one address, phon number and email.
 - Teacher can only belong to one school.
 - Educational management must be a employee, so he/she exist in staff. 
+- Teacher can be consultant or employee. 

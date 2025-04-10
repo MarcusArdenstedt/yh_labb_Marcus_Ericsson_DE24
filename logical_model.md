@@ -41,15 +41,18 @@
 - program_id (PK)
 - school_id (FK)
 - program_name
+
+***Program_Course***
+- program_id (FK)
+- course_id (FK)
 - starts_date
 - ends_date
 
 
-***Course_schedule***
+***Course***
 - cours_id (PK)
 - course_code (FK)
-- starts_date
-- ends_date
+- language
 
 
 ***Course_info***
@@ -69,8 +72,8 @@
 - phone
 - email
 
-***Course_schedule***
-- schedule_id (PK)
+***Teacher_Course***
+- teacher_course_id (PK)
 - teacher_id (FK)
 - course_id (FK)
 - starts_date
@@ -132,16 +135,17 @@
 - last_name
 - phone
 - email
-- work_title
-- roll
+
 
 ***Employee_info***
 - employee_id (PK)
 - social_security_nr  
 - address_id (FK)
 - salary
+- work_title
 - started
 - ended
+
 
 ***Consultant***
 - consultant_id (PK)
@@ -169,9 +173,9 @@
 
 - School (<u>school_id</u>, address_id, schoolname, phone, email, organizer_id, open_date, FK: address_id -> Address, Fk: organizer_id -> Organizer)
 
-- Program (<u>program_id</u>, program_name, nr_active)
+- Program (<u>program_id</u>, school_id, program_name, starts_date, ends_date, FK: school_id -> School)
 
-- Class (<u>class_id</u>, management_id, class_name)
+- Class (<u>class_id</u>, class_name, staff_id, school_id, FK: staff_id -> Staff, FK: school_id -> School)
 
 - Student (<u>student_id</u>, first_name, last_name, class_id, FK: class_id -> Class)
 
@@ -183,11 +187,11 @@
 
 - Course_info (<u>course_code</u>, course_name, credits, description)
 
-- Course (<u>course_id</u>, course_code, FK: course_code -> Course_info)
+- Course (<u>course_id</u>, course_code, language)
 
-- Standalonecourse (<u>standalonecourse_id</u>, starts_date, ends_date, course_code, FK course_code -> Course_info)
+- Standalonecourse (<u>standalonecourse_id</u>, language, course_code, FK course_code -> Course_info)
 
-- Teacher (<u>teacher</u>, staff_id, FK: staff_id -> Staff)
+- Teacher (<u>teacher_id</u>, consultant_id, employee_id, first_name, last_name, phone, email, FK: consultant_id -> Consultant, FK: employee_id -> Employee_id)
 
 - Staff (<u>staff_id</u>, school_id, first_name, last_name, phone, email, work_title, roll, FK: school_id -> School)
 
@@ -195,19 +199,17 @@
 
 Consultant_company (<u>organization_nr</u>, company_name, f_tax, phone, email, address_id, FK: address_id -> Addrsss)
 
-Employee_info (<u>social_security_nr</u>, staff_id, address_id, salery_per_moth, started, FK staff_id -> Staff, FK: address_id -> Address)
+Employee_info (<u>employee_id</u>,social_security_nr, staff_id, address_id, salery_per_moth, started, FK staff_id -> Staff, FK: address_id -> Address)
 
-EducationalManagement (<u>management_id</u>, staff_id, FK: class_id -> Class, FK: staff_id -> Staff)
 
-SchoolProgramClass (<u>school_id</u>, <u>program_id</u>, <u>class_id</u>, nr_student, starts_date, ends_date, FK: school_id -> School, FK: program_id -> Program, FK: class_id -> Class)
 
-Enrollment (<u>standalonecourse_id</u>, <u>student_id</u>, <u>shcool_id</u>, FK: standalonecourse_id -> Standalonecourse, FK: student_id -> Student, FK: school_id -> School)
+Enrollment (<u>enrollment_id</u>, standalonecourse_id, student_id, enrollment_date, grade, FK: standalonecourse_id -> Standalonecourse, FK: student_id -> Student) 
 
-CourseProgram (<u>course_id</U>, program_id, starts_date, ends_date, FK program_id -> Program)
+Program_Course (<u>programcourse_id</u>, program_id, course_id, starts_date, ends_date, FK program_id -> Program, FK: course_id -> Course)
 
-TeacherAssignment (<u>teacher_id</u>, <u>standalonecourse_id</u>, <u>school_id</u>, FK: teacher_id -> Teacher, FK: standalonecourse_id -> Standalonecourse, FK: school_id -> School)
 
-TeacherCourse (<u>teacher_id</u>, course_id, FK: course_id -> Course)
+
+Teacher_Course (<u>teacher_course_id</u>, teacher_id, course_id, FK: teacher_id -> Teacher, FK: course_id -> Course)
 
 
 **Function dependency**
@@ -216,43 +218,40 @@ TeacherCourse (<u>teacher_id</u>, course_id, FK: course_id -> Course)
 
 - school_id -> (address_id, schoolname, phone, email, organizer_id, open_date)
 
+- program_id -> (school_id, class_id, program_name, starts_date, ends_date)
 
-- program_id -> (program_name, nr_active)
-
-- class_id -> (management_id, class_name)
+- class_id -> (class_name, staff_id, school_id)
 
 - student_id -> (first_name, last_name, class_id)
 
 - social_security_nr -> (student_id, address_id, phone, email)
 
-- standalonecourse_id -> (starts_date, ends_date, course_code)
+- standalonecourse_id -> (language, course_code)
 
-- course_id -> course_code
+- course_id -> (course_code, language)
 
-- teacher_id -> course_id
+- teacher_id -> (consultant_id, employee_id, first_name, last_name, phone, email)
 
-- teacher_id -> staff_id
+- teacher_course_id -> (teacher_id, course_id, starts_date, ends_date) 
+
+- teacher_standalonecourse_id -> (teacher_id, standalonecourse_id, starts_date, ends_date)
 
 - staff_id -> (school_id, first_name, last_name, phone, email, work_title, roll)
 
-- consultant_id -> (fee_per_hour, organization_nr, staff_id)
+- consultant_id -> (fee_per_hour, work_title, organization_nr, staff_id)
 
 - organization_nr -> (company_name, f_tax, phone, email, address_id)
 
-- social_security_nr -> (staff_id, address_id, salery_per_month, started)
+- employee_id -> (social_security_nr, staff_id, address_id, salery_per_month, started)
 
-- management_id -> (staff_id)
 
 - address_id -> (address, postal_code, city_id)
 
 - city_id -> city_name
 
 
-- (school_id, program_id, class_id) -> (school_id, program_id, class_id, nr_student, starts_date, ends_date)
-
-
 **Trivially**
-- (standalonecours_id, student_id, school_id) -> (standalonecourse_id, student_id, school_id)
 
-- (techer_id, standalonecourse_id, school_id) -> (teacher_id, standalonecourse_id, school_id)
+- (school_id, student_id) -> (school_id, student_id)
+
 

@@ -43,7 +43,9 @@ VALUES
     (2, 'Fyrbråksvägen 31', 41250),
     (1, 'Paradisvägen 1', 17831),
     (1, 'Rörvägen 100', 13650),
-    (2, 'Järfällavägen 34', 41337);
+    (2, 'Järfällavägen 34', 41337),
+    (1, 'Metroitvägen 14', 17560),
+    (2, 'Åsevänden 33', 41127);
 
 
 
@@ -65,12 +67,20 @@ VALUES
     (2, 'GöteborgYrkes', '031-365-00', 'yrkescogoteborg@.com', 1, '2010-10-10');
 
 
-INSERT INTO "Program" (program_name, nr_active)
+INSERT INTO "Program" (school_id, program_name, starts_date, ends_date)
 VALUES
-    ('Javautvecklare', 1),
-    ('Automationsingenjör', 2),
-    ('Elnätsdesign', 3),
-    ('UX-designer', 2);
+    (1, 'Javautvecklare', '2025-09-01', '2027-06-20'),
+    (2, 'Automationsingenjör', '2025-09-02', '2027-06-25'),
+    (2, 'Elnätsdesign', '2025-09-02', '2027-06-25'),
+    (1, 'UX-designer', '2025-09-01', '2027-06-20'),
+    (1, 'Javautvecklare', '2026-09-02', '2028-06-15'),
+    (2, 'Automationsingenjör', '2026-09-03', '2028-06-20'),
+    (2, 'Elnätsdesign', '2026-09-03', '2028-06-20'),
+    (1, 'UX-design', '2026-09-02', '2028-06-15'),
+    (1, 'Javautvecklare', '2027-09-03', '2029-06-19'),
+    (2, 'Automationsingenjör', '2027-09-02', '2029-06-22'),
+    (2, 'Elnätsdesign', '2027-09-02', '2029-06-22'),
+    (1, 'UX-design', '2027-09-03', '2029-06-19');
 
 
 INSERT INTO Course_info (course_code, course_name, credits, descriptions)
@@ -91,117 +101,111 @@ VALUES
     ('CBS205', 'Cybersäkerhet', 40, 'Man får lära sig bygga en starkare säkerhetskultur på företag och i organisationer, och omfattar cyberkriminalitet.'),
     ('APD206', 'AI & Prompt Design', 40, 'Den här kusren är mer för dem som har erfarenhet inom UX-design. Man kommer fördjupa med integrera AI-verktyg i din designprocess, Arbeta etisk och unvika diskriminering med AI');
 
-INSERT INTO Course (course_code)
+INSERT INTO Course (course_code, languages)
 VALUES
-    ('APM101'),
-    ('DBH102'),
-    ('JEE201'),
-    ('JPG103'),
-    ('JPG202'),
-    ('AMT104'),
-    ('RRS105'),
-    ('ETCAD106'),
-    ('EDS203'),
-    ('AME107'),
-    ('NEBR108'),
-    ('FRT109'),
-    ('VSD204'),
-    ('CBS205'),
-    ('APD206');
+    ('APM101', 'Svenska'),
+    ('DBH102', 'Svenska'),
+    ('JEE201', 'Svenska'),
+    ('JPG103', 'Engelska'),
+    ('JPG202', 'Engelska'),
+    ('AMT104', 'Engelska'),
+    ('RRS105', 'Svenska'),
+    ('ETCAD106', 'Svenska'),
+    ('EDS203', 'Svenska'),
+    ('AME107', 'Svenska'),
+    ('NEBR108', 'Svenska'),
+    ('FRT109', 'Svenska'),
+    ('VSD204', 'Svenska'),
+    ('CBS205', 'Svenska'),
+    ('APD206', 'Svenska');
 
 
-INSERT INTO Standalonecourse (course_code, starts_date, ends_date)
+INSERT INTO Standalonecourse (languages, course_code)
 VALUES
-    ('APD206', '2025-10-10', '2025-12-10'),
-    ('CBS205', '2025-10-09', '2025-12-10');
+    ('Engelska', 'APD206'),
+    ('Svenska', 'CBS205'),
+    ('Engelska', 'AME107'),
+    ('Svenska', 'FRT109');
 
 
-INSERT INTO Staff (school_id, first_name, last_name, phone, email, work_title, roll)
+INSERT INTO Staff (school_id, first_name, last_name, phone, email)
 VALUES
-    (1, 'Olof', 'Svensson', '073-267-13-42', 'olofsvensson@.com', 'rektor', 'anställd'),
-    (2, 'Linda', 'Lindasson', '073-245-12-90', 'lindalindasson@.com', 'rektor', 'anställd'),
-    (1, 'Jan', 'Jakobson', '070-456-23-15', 'janjakaobson@.com', 'lärare', 'anställd'),
-    (1, 'Rollo', 'Lothbrok', '071-321-90-99', 'rollolothbrob@.com', 'lärare', 'konsult'),
-    (1, 'Joe', 'Andersson', '070-147-31-90', 'joeandersson@.com', 'lärare', 'konsult'),
-    (2, 'Karin', 'Svenson', '070-648-87-56', 'karinsvensson@.com', 'lärare', 'anställd'),
-    (2, 'Malin', 'gustavsson', '070-345-56-76', 'malingustavsson@.com', 'lärare', 'konsult'),
-    (2, 'Beck', 'Svahn', '071-231-19-91', 'becksvahn@.com', 'fastighetskötare', 'konsult'),
-    (1, 'Stig', 'Larsson', '075-412-94-34', 'stiglarsson@.com', 'fastighetskötare', 'konsult'),
-    (1, 'Jack', 'Green', '070-287-69-69', 'jackgreen@.com', 'administration', 'anställd'),
-    (1, 'Sven', 'Erixon', '070-247-57-73', 'svenerixon@.com', 'administration', 'anställd'),
-    (1, 'Lisa', 'Lisason', '070-167-15-13', 'lisalisason@.com', 'administration', 'anställd'),
-    (2, 'Maja', 'Majason', '070-498-89-78', 'majamajason@.com', 'administration', 'anställd'),
-    (2, 'Bob', 'Bobson', '070-591-45-12', 'bobbobson@.com', 'administration', 'anställd'),
-    (2, 'Linn', 'Eriksson', '070-207-01-23', 'linneriksson@.com', 'administration', 'anställd'),
-    (2, 'Scott', 'Svansson', '070-734-37-72', 'scottsvansson@.com', 'lärare', 'konsult'),
-    (1, 'Jakob', 'Brorson', '073-453-78-87', 'jakobbrorson@.com', 'educationalmanagement', 'anställd'),
-    (2, 'Mindy', 'Larsson', '075-421-21-22', 'mindylarsson@.com', 'educationalmanagemnet', 'anställd'),
-    (1, 'Jennifer', 'Axelson', '077-813-81-82', 'jenniferaxelson@.com', 'educationalmanagement', 'anställd'),
-    (2, 'Carolina', 'Karlson', '077-953-91-19', 'carolinakarlson@.com', 'educationalmanagement', 'anställd');
+    (1, 'Olof', 'Svensson', '073-267-13-42', 'olofsvensson@.com'),
+    (2, 'Linda', 'Lindasson', '073-245-12-90', 'lindalindasson@.com'),
+    (1, 'Jack', 'Green', '070-287-69-69', 'jackgreen@.com'),
+    (1, 'Sven', 'Erixon', '070-247-57-73', 'svenerixon@.com'),
+    (1, 'Lisa', 'Lisason', '070-167-15-13', 'lisalisason@.com'),
+    (2, 'Maja', 'Majason', '070-498-89-78', 'majamajason@.com'),
+    (2, 'Bob', 'Bobson', '070-591-45-12', 'bobbobson@.com'),
+    (2, 'Linn', 'Eriksson', '070-207-01-23', 'linneriksson@.com'),
+    (1, 'Jakob', 'Brorson', '073-453-78-87', 'jakobbrorson@.com'),
+    (2, 'Mindy', 'Larsson', '075-421-21-22', 'mindylarsson@.com'),
+    (1, 'Jennifer', 'Axelson', '077-813-81-82', 'jenniferaxelson@.com'),
+    (2, 'Carolina', 'Karlson', '077-953-91-19', 'carolinakarlson@.com'),
+    (2, 'Beck', 'Svahn', '071-231-19-91', 'becksvahn@.com'),
+    (1, 'Stig', 'Larsson', '075-412-94-34', 'stiglarsson@.com');
 
 
 INSERT INTO Consultant_company (organization_nr, company_name, f_tax, phone, email, address_id)
 VALUES
     ('667812-1234', 'TeachIT', True, '010-156-90-99', 'teachit@.com', 4),
     ('77910-3456', 'Teaching', False, '010-234-19-90', 'teaching@.com', 5),
-    ('111344-7891', 'SchoolsOut', True, '010-519-22-55', 'schoolsout@.com', 6),
-    ('99910-5189', 'FastighetAB', True, '017-342-31-13', 'faastighetab@.com', 9),
-    ('55430-7865', 'FindusAB', False, '018-784-84-48', 'findus@.com', 8);
+    ('111344-7891', 'SchoolsOut', True, '010-519-22-55', 'schoolsout@.com', 6);
+  
 
 
 
-
-INSERT INTO Consultant (fee_per_hour, organization_nr, staff_id)
+INSERT INTO Consultant (fee_per_hour, work_title, organization_nr)
 VALUES
-    (1200, '667812-1234', 4),
-    (1000, '77910-3456', 5),
-    (900, '111344-7891', 7),
-    (1500, '55430-7865', 8),
-    (950, '99910-5189', 9);
+    (1200, 'Lärare', '667812-1234'),
+    (1000, 'Lärare', '77910-3456'),
+    (900, 'Lärare', '111344-7891');
 
 
-INSERT INTO Employee_info (social_security_nr, staff_id, address_id, salary_per_month, started)
+INSERT INTO Employee_info (social_security_nr, staff_id, address_id, work_title, salary_per_month, started, ended)
 VALUES
-    ('1978-01-29-4991', 1, 7, 55000, '2000-10-17'),
-    ('1987-10-14-1337', 2, 8, 65000,'2015-01-10'),
-    ('1993-11-11-4578', 3, 11, 44000, '2020-10-02'),
-    ('1980-07-25-9012', 6, 12, 40000, '2010-10-10'),
-    ('1995-04-19-1783', 10, 13, 36000, '2018-10-27'),
-    ('1980-12-24-5682', 11, 14, 35000, '2005-01-10'),
-    ('1985-05-03-4512', 12, 15, 30000, '2023-01-10'),
-    ('1975-01-31-1284', 13, 16, 38000, '2010-01-15'),
-    ('1974-02-24-3457', 14, 17, 38500, '2009-09-18'),
-    ('2000-02-10-2341', 15, 18, 29500, '2024-09-10'),
-    ('1997-03-09-4538', 16, 19, 33000, '2020-05-20'),
-    ('1990-05-02-1245', 17, 20, 35500, '2020-05-20'),
-    ('1980-11-11-4578', 18, 21, 33000, '2010-01-15'),
-    ('1992-05-19-4587', 19, 22, 33000, '2018-10-15'),
-    ('1970-10-28-3452', 20, 23, 44000, '1996-09-10');
+    ('1978-01-29-4991', 1, 7, 'Rektor', 55000, '2000-10-17', NULL),
+    ('1987-10-14-1337', 2, 8, 'Rektor', 65000,'2015-01-10', NULL),
+    ('1993-11-11-4578', 5, 11, 'Administration', 44000, '2020-10-02', NULL),
+    ('1980-07-25-9012', 6, 12, 'Administration', 40000, '2010-10-10', NULL),
+    ('1995-04-19-1783', 7, 13, 'Administaration', 36000, '2018-10-27', NULL),
+    ('1980-12-24-5682', 8, 14, 'Administration', 35000, '2005-01-10', '2024-06-30'),
+    ('1974-02-24-3457', 9, 17, 'Educational management', 38500, '2009-09-18', NULL),
+    ('2000-02-10-2341', 10, 18, 'Educational mangement', 29500, '2024-09-10', NULL),
+    ('1997-03-09-4538', 11, 19, 'Educational management', 33000, '2020-05-20', NULL),
+    ('1990-05-02-1245', 12, 20, 'Educational management', 35500, '2020-05-20', NULL),
+    ('1989-07-01-1441', 13, 33, 'Fastighetsskötare', 25000, '2000-06-25', NULL),
+    ('1980-09-14-1989', 14, 34, 'Fastighetsskötare', 30000, '1996-10-11', NULL);
+  
     
 
-INSERT INTO Teacher (staff_id)
+INSERT INTO Teacher (consultant_id, employee_id, school_id, first_name, last_name, phone, email)
 VALUES
-    (3),
-    (4),
-    (5),
-    (6),
-    (7),
-    (8);
+    (1, NULL, 1, 'Rollo', 'Lothbrok', '071-321-90-99', 'rollolothbrob@.com'),
+    (2, NULL, 1, 'Joe', 'Andersson', '070-147-31-90', 'joeandersson@.com'),
+    (3, NULL, 2, 'Malin', 'gustavsson', '070-345-56-76', 'malingustavsson@.com'),
+    (NULL, 3, 1, 'Jan', 'Jakobson', '070-456-23-15', 'janjakaobson@.com'),
+    (NULL, 5, 2, 'Karin', 'Svensson', '070-648-87-56', 'karinsvensson@.com'),
+    (NULL, 11, 2, 'Scott', 'Svansson', '070-734-37-72', 'scottsvansson@.com');
 
 
-INSERT INTO EducationalManagement (staff_id)
+
+
+
+INSERT INTO "Class" (class_name, program_id, staff_id, school_id)
 VALUES
-    (17),
-    (19),
-    (18);
-
-
-
-INSERT INTO "Class" (management_id, class_name)
-VALUES
-    (1, 'JV2025'),
-    (1, 'AMI2025'),
-    (2, 'AMI2025');
+    ('JV2025', 1, 11, 1),
+    ('AMI2025', 2, 12, 2),
+    ('ELD2025', 3, 13, 2),
+    ('UXD2025', 4, 14, 1),
+    ('JV2026', 5, 11, 1),
+    ('AMI2026', 6, 12, 2),
+    ('ELD2026', 7, 13, 2),
+    ('UXD2026', 8, 14, 1),
+    ('JV2027', 9, 11, 1),
+    ('AMI2027', 10, 12, 2),
+    ('ELD2027', 11, 13, 2),
+    ('UXD2027', 12, 14, 1);
 
 
 
@@ -240,53 +244,127 @@ VALUES
 
 -- Bridge table
 
-INSERT INTO CourseProgram (course_id, program_id, starts_date, ends_date)
+INSERT INTO Program_Course (program_id, course_id, starts_date, ends_date)
 VALUES
     (1, 1, '2025-10-01', '2025-11-15'),
-    (2, 1, '2025-11-16', '2025-12-20'),
-    (3, 1, '2026-01-05', '2026-02-28'),
-    (6, 2, '2025-10-01', '2025-11-15'),
-    (7, 2, '2025-11-20', '2025-12-17'),
-    (8, 2, '2026-01-10', '2026-02-28'),
-    (15, 2, '2026-03-01', '2026-04-10');
+    (1, 2, '2025-11-17', '2025-12-20'),
+    (1, 3, '2026-01-10', '2026-02-28'),
+    (1, 4, '2026-03-01', '2026-04-15'),
+    (1, 5, '2026-04-19', '2026-05-29'),
+    (2, 6, '2025-10-01', '2025-11-16'),
+    (2, 7, '2025-11-18', '2025-12-30'),
+    (2, 8, '2026-01-10', '2026-03-10'),
+    (3, 9, '2025-10-01', '2025-11-10'),
+    (3, 10, '2025-11-15', '2025-12-30'),
+    (3, 11, '2026-01-10', '2026-02-25'),
+    (4, 3, '2025-10-01', '2025-12-01'),
+    (4, 4, '2025-12-01', '2026-01-25'),
+    (4, 12, '2026-01-30', '2026-03-01'),
+    (1, 1, '2026-10-01', '2026-11-15'),
+    (1, 2, '2026-11-17', '2026-12-20'),
+    (1, 3, '2027-01-10', '2027-02-28'),
+    (1, 4, '2027-03-01', '2027-04-15'),
+    (1, 5, '2027-04-19', '2027-05-29'),
+    (2, 6, '2026-10-01', '2026-11-16'),
+    (2, 7, '2026-11-18', '2026-12-30'),
+    (2, 8, '2027-01-10', '2027-03-10'),
+    (3, 9, '2026-10-01', '2026-11-10'),
+    (3, 10, '2026-11-15', '2026-12-30'),
+    (3, 11, '2027-01-10', '2027-02-25'),
+    (4, 3, '2026-10-01', '2026-12-01'),
+    (4, 4, '2026-12-01', '2027-01-25'),
+    (4, 12, '2027-01-30', '2027-03-01'),
+    (1, 1, '2027-10-01', '2027-11-15'),
+    (1, 2, '2027-11-17', '2027-12-20'),
+    (1, 3, '2028-01-10', '2028-02-28'),
+    (1, 4, '2028-03-01', '2028-04-15'),
+    (1, 5, '2028-04-19', '2028-05-29'),
+    (2, 6, '2027-10-01', '2027-11-16'),
+    (2, 7, '2027-11-18', '2027-12-30'),
+    (2, 8, '2028-01-10', '2028-03-10'),
+    (3, 9, '2027-10-01', '2027-11-10'),
+    (3, 10, '2027-11-15', '2027-12-30'),
+    (3, 11, '2028-01-10', '2028-02-25'),
+    (4, 3, '2027-10-01', '2027-12-01'),
+    (4, 4, '2027-12-01', '2028-01-25'),
+    (4, 12, '2028-01-30', '2028-03-01');
 
 
 
 
 
-INSERT INTO TeacherCourse (teacher_id, course_id)
+
+
+    
+
+
+
+
+
+INSERT INTO Teacher_Course (teacher_id, course_id, starts_date, ends_date)
 VALUES
-    (1, 1),
-    (2, 2),
-    (3, 3),
-    (4, 6),
-    (5, 7),
-    (6, 8),
-    (6, 15);
+    (1, 1, '2025-10-01', '2025-11-15'),
+    (1, 2, '2025-11-17', '2025-12-20'),
+    (1, 3, '2026-01-10', '2026-02-28'),
+    (1, 4, '2026-03-01', '2026-04-15'),
+    (1, 5, '2026-04-19', '2026-05-29'),
+    (3, 6, '2025-10-01', '2025-11-16'),
+    (3, 7, '2025-11-18', '2025-12-30'),
+    (3, 8, '2026-01-10', '2026-03-10'),
+    (5, 9, '2025-10-01', '2025-11-10'),
+    (5, 10, '2025-11-15', '2025-12-30'),
+    (5, 11, '2026-01-10', '2026-02-25'),
+    (2, 3, '2025-10-01', '2025-12-01'),
+    (2, 4, '2025-12-01', '2026-01-25'),
+    (2, 12, '2026-01-30', '2026-03-01'),
+    (1, 1, '2026-10-01', '2026-11-15'),
+    (1, 2, '2026-11-17', '2026-12-20'),
+    (1, 3, '2027-01-10', '2027-02-28'),
+    (1, 4, '2027-03-01', '2027-04-15'),
+    (1, 5, '2027-04-19', '2027-05-29'),
+    (3, 6, '2026-10-01', '2026-11-16'),
+    (3, 7, '2026-11-18', '2026-12-30'),
+    (3, 8, '2027-01-10', '2027-03-10'),
+    (5, 9, '2026-10-01', '2026-11-10'),
+    (5, 10, '2026-11-15', '2026-12-30'),
+    (5, 11, '2027-01-10', '2027-02-25'),
+    (6, 3, '2026-10-01', '2026-12-01'),
+    (6, 4, '2026-12-01', '2027-01-25'),
+    (6, 12, '2027-01-30', '2027-03-01'),
+    (NULL, 1, '2027-10-01', '2027-11-15'),
+    (NULL, 2, '2027-11-17', '2027-12-20'),
+    (NULL, 3, '2028-01-10', '2028-02-28'),
+    (NULL, 4, '2028-03-01', '2028-04-15'),
+    (NULL, 5, '2028-04-19', '2028-05-29'),
+    (NULL, 6, '2027-10-01', '2027-11-16'),
+    (NULL, 7, '2027-11-18', '2027-12-30'),
+    (NULL, 8, '2028-01-10', '2028-03-10'),
+    (NULL, 9, '2027-10-01', '2027-11-10'),
+    (NULL, 10, '2027-11-15', '2027-12-30'),
+    (NULL, 11, '2028-01-10', '2028-02-25'),
+    (NULL, 3, '2027-10-01', '2027-12-01'),
+    (NULL, 4, '2027-12-01', '2028-01-25'),
+    (NULL, 12, '2028-01-30', '2028-03-01');
 
+
+
+INSERT INTO Enrollment (standalonecourse_id, student_id, enrollment_date, grade)
+VALUES
+    (1, 6, '2025-06-10', NULL),
+    (2, 8, '2023-06-10', 'A'),
+    (3, 9, '2022-06-10', 'C'),
+    (4,  NULL, NULL, NULL);
 
 --- Ternary table.
 
-INSERT INTO SchoolProgramClass (school_id, program_id, class_id, nr_student, starts_date, ends_date)
-VALUES
-    (1, 1, 1, 4, '2025-09-10', '2027-06-25'),
-    (1, 2, 2, NULL, '2025-09-10', '2027-06-20'),
-    (2, 2, 3, 3, '2025-11-02', '2027-06-28');
+-- INSERT INTO SchoolProgramClass (school_id, program_id, class_id, nr_student, starts_date, ends_date)
+-- VALUES
+--     (1, 1, 1, 4, '2025-09-10', '2027-06-25'),
+--     (1, 2, 2, NULL, '2025-09-10', '2027-06-20'),
+--     (2, 2, 3, 3, '2025-11-02', '2027-06-28');
  
 
--- this is trivially, that's mean it's have non-prime attribute thats are depending on the key.
-INSERT INTO Enrollment (standalonecourse_id, student_id, school_id)
-VALUES
-    (1, 4, 1),
-    (2, 7, 2),
-    (2, 2, 1);
 
-
-INSERT INTO TeacherAssignment (teacher_id, standalonecourse_id, school_id)
-VALUES
-    (6, 1, 1),
-    (3, 2, 2),
-    (2, 2, 1);
 
 
 

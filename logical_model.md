@@ -121,9 +121,10 @@
 
 ***Class***
 - class_id (PK)
-- program_id (FK)
-- school_id (FK)
 - class_name
+- program_id (FK)
+- management_id (FK)
+- school_id (FK)
 
 
 
@@ -135,14 +136,20 @@
 - last_name
 - phone
 - email
+- work_title
 
+
+***Educational_management***
+- management_id (PK)
+- employee_id (FK)
+- first_name
+- last_name
 
 ***Employee_info***
 - employee_id (PK)
 - social_security_nr  
 - address_id (FK)
 - salary
-- work_title
 - started
 - ended
 
@@ -191,17 +198,17 @@
 
 - Standalonecourse (<u>standalonecourse_id</u>, language, course_code, FK course_code -> Course_info)
 
-- Teacher (<u>teacher_id</u>, consultant_id, employee_id, first_name, last_name, phone, email, FK: consultant_id -> Consultant, FK: employee_id -> Employee_id)
+- Teacher (<u>teacher_id</u>, consultant_id, employee_id, first_name, last_name, phone, email, FK: employee_id -> Employee_id)
 
-- Staff (<u>staff_id</u>, school_id, first_name, last_name, phone, email, work_title, roll, FK: school_id -> School)
+- Staff (<u>staff_id</u>, school_id, first_name, last_name, phone, email, work_title, FK: school_id -> School)
 
-- Consultant (<u>consultant_id</u>, fee_per_hour, organizer_nr, staff_id, FK organizer_nr -> Consultant_company, FK: staff_id -> Staff)
+- Consultant (<u>consultant_id</u>, fee_per_hour, organizer_nr, staff_id, teacher_id, FK organizer_nr -> Consultant_company, FK: teacher_id -> Teacher)
 
 Consultant_company (<u>organization_nr</u>, company_name, f_tax, phone, email, address_id, FK: address_id -> Addrsss)
 
 Employee_info (<u>employee_id</u>,social_security_nr, staff_id, address_id, salery_per_moth, started, FK staff_id -> Staff, FK: address_id -> Address)
 
-
+Educational_management (<u>management_id</u>, employee_id, first_name, last_name, FK: employee_id -> Employee_info)
 
 Enrollment (<u>enrollment_id</u>, standalonecourse_id, student_id, enrollment_date, grade, FK: standalonecourse_id -> Standalonecourse, FK: student_id -> Student) 
 
@@ -220,7 +227,7 @@ Teacher_Course (<u>teacher_course_id</u>, teacher_id, course_id, FK: teacher_id 
 
 - program_id -> (school_id, class_id, program_name, starts_date, ends_date)
 
-- class_id -> (class_name, staff_id, school_id)
+- class_id -> (class_name, program_id, management_id, school_id)
 
 - student_id -> (first_name, last_name, class_id)
 
@@ -242,8 +249,9 @@ Teacher_Course (<u>teacher_course_id</u>, teacher_id, course_id, FK: teacher_id 
 
 - organization_nr -> (company_name, f_tax, phone, email, address_id)
 
-- employee_id -> (social_security_nr, staff_id, address_id, salery_per_month, started)
+- employee_id -> (social_security_nr, staff_id, address_id, salery_per_month, started, ended)
 
+- management_id -> (employee_id, first_name, last_name)
 
 - address_id -> (address, postal_code, city_id)
 
@@ -254,4 +262,4 @@ Teacher_Course (<u>teacher_course_id</u>, teacher_id, course_id, FK: teacher_id 
 
 - (school_id, student_id) -> (school_id, student_id)
 
-
+- (school_id, standalonecourse_id) -> (school_id, standalonecourse_id)

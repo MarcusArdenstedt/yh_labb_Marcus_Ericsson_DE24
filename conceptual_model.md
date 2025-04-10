@@ -43,10 +43,12 @@ each Student `have` one and only one student information, Studen_info can only `
 - Teacher `teaches` in zero, one or more coursers in course_schedule, each  course in Course_schedule `shared with` one or more teachers.
 - Teacher `teaches in` one or more standalonecourses, Standalonecourse `taught` by zero, one or more teachers.
 - a school `is a workplace` for one or more techers, Teacher `work at` one and only one school.  
+- a Educationa_management is `responsible` for more classes, Classes `management` by one onad only one educational_management.
+- a Educationa_management `have` one and only one emloyee_info, Eployee_info `belongs to` one and only one educational_management.  
 
 **Initial conceptual ERD**
 
-<img src = "assets/yh_initial_conceptual_erd.png">
+<img src = "assets/yh_conceptual_erd.png">
 
 
 <br>
@@ -78,7 +80,7 @@ each Student `have` one and only one student information, Studen_info can only `
 - Staff
 - Consultan
 - Consultant_company
-
+- eduactional_management
 
 **Business rules**
 

@@ -66,7 +66,6 @@ CREATE TABLE IF NOT EXISTS School (
     FOREIGN KEY (organizer_id) REFERENCES Organizer (organizer_id) ON DELETE CASCADE
 );
 
- 
 CREATE TABLE IF NOT EXISTS "Program" (
     program_id SERIAL PRIMARY KEY,
     school_id INTEGER NOT NULL,

@@ -19,7 +19,7 @@ TABLE Organizer {
   email VARCHAR(255) UNIQUE [not null]
   address_id integer [not null]
 }
-REF: Organizer.organizer_id - Address.address_id
+REF: Organizer.address_id - Address.address_id
 
 
 TABLE School {
@@ -32,6 +32,8 @@ TABLE School {
   open_date DATE [not null]
 }
 REF: School.organizer_id > Organizer.organizer_id
+REF: School.address_id > Address.address_id
+
 
 
 TABLE Program {
@@ -46,13 +48,13 @@ REF: Program.school_id > School.school_id
 TABLE Class {
   class_id SERIAL [primary key]
   class_name varchar(50)
+  staff_id integer 
   program_id integer [not null]
-  management_id integer
   school_id integer [not null]
 }
 REF: Class.program_id > Program.program_id
-REF: Class.management_id > Educational_management.management_id
 REF: Class.school_id > School.school_id
+REF: Class.staff_id > Staff.staff_id
 
 
 
@@ -63,6 +65,8 @@ TABLE Student {
   class_id integer 
 }
 REF: Student.class_id > Class.class_id
+
+
 
 Table Student_info {
   social_security_nr VARCHAR(15) [primary key]
@@ -112,11 +116,9 @@ REF: Consultant_company.address_id - Address.address_id
 TABLE Employee_info {
   employee_id SERIAL [PRIMARY KEY]
   social_security_nr varchar(15) [not null]
-  staff_id integer [not null]
   address_id integer [not null]
   salery_per_month integer [not null]
 }
-REF: Employee_info.staff_id - Staff.staff_id
 REF: Employee_info.address_id - Address.address_id
 
 Table Teacher {
@@ -164,17 +166,6 @@ Table Course {
 REF: Course.course_code - Course_info.course_code
 
 
-
-
-Table Educational_management {
-  management_id SERIAL [primary key]
-  employee_id integer [not null]
-  first_name VARCHAR(50) [not null]
-  last_name varchar(50) [not null]
-  phone varchar(20) UNIQUE [not null]
-  email varchar(255) UNIQUE [not null]
-}
-REF: Educational_management.employee_id - Employee_info.employee_id
 
 
 Table Teacher_Course {
@@ -228,5 +219,4 @@ TABLE School_Standalonecourse {
 }
 REF: School_Standalonecourse.school_id > School.school_id
 REF: School_Standalonecourse.standalonecourse_id > Standalonecourse.standalonecourse_id
-
 

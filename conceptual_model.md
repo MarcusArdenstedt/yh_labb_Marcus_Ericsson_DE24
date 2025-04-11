@@ -55,7 +55,7 @@ each Student `have` one and only one student information, Studen_info can only `
 **Conceptual ERD with composite entities**
 
 
-<img src = "assets/yh_conceptual_erd.png">
+<img src = "assets/yh_logical_erd.png">
 
 ***Entities***
 - School
@@ -84,12 +84,10 @@ each Student `have` one and only one student information, Studen_info can only `
 **Business rules**
 
 - A program can only exist in one school.
-- A program can be created without having a class.
+- A program has always a class.
 - a class can only belong to one program.
 - student can't be in sevral classes, only in one.
 - Standalonecourse can take student that not are in any classe.
 - Staff can only belong to one school.
 - Student can only use one address, phon number and email.
-- Teacher can only belong to one school.
 - Educational management must be a employee, so he/she exist in staff. 
-- Teacher can be consultant or employee. 
